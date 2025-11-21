@@ -1,33 +1,105 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Viktor Kratiuk</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script>
-      // Store hash and remove it IMMEDIATELY to prevent browser jump
-      // This must run BEFORE any other code
-      if (window.location.hash) {
-        var savedHash = window.location.hash;
-        history.scrollRestoration = 'manual';
-        // Remove hash immediately to prevent jump
-        history.replaceState(null, null, ' ');
-        
-        // Store it for later use
-        window.initialHash = savedHash;
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viktor Kratiuk</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <style>
+    /* Hide app initially to prevent flash */
+    #app {
+      display: none;
+    }
+
+    html.is-mobile #app {
+      display: none !important;
+    }
+
+    html.is-mobile #mobile-warning {
+      display: flex !important;
+    }
+
+    /* Mobile warning styles */
+    #mobile-warning {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #0a0a0a;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      z-index: 9999;
+      font-family: 'Space Mono', monospace, system-ui;
+    }
+
+    #mobile-warning img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 2rem;
+      filter: invert(1);
+    }
+
+    #mobile-warning h1 {
+      font-size: 2rem;
+      color: #fff;
+      margin: 0 0 1rem 0;
+    }
+
+    #mobile-warning p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 400px;
+      margin: 0;
+    }
+  </style>
+  <!-- Mobile detection logic -->
+  <script>
+    (function () {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      var aspectRatio = width / height;
+      var isMobile = width < height || aspectRatio <= 1.25;
+
+      if (isMobile) {
+        document.documentElement.classList.add('is-mobile');
       }
-    </script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    })();
+
+    // Store hash and remove it IMMEDIATELY to prevent browser jump
+    // This must run BEFORE any other code
+    if (window.location.hash) {
+      var savedHash = window.location.hash;
+      history.scrollRestoration = 'manual';
+      // Remove hash immediately to prevent jump
+      history.replaceState(null, null, ' ');
+
+      // Store it for later use
+      window.initialHash = savedHash;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="mobile-warning">
+    <img src="/src/assets/icons/no-mobile.svg" alt="No Mobile" />
+    <h1>Mobile & Tablet Not Supported</h1>
+    <p>This web page is not optimized for mobile phones and tablets. Please visit on a desktop or laptop computer</p>
+  </div>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

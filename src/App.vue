@@ -27,7 +27,6 @@ import skillsIcon from "./assets/icons/skills.svg";
 import projectsIcon from "./assets/icons/projects.svg";
 import sunIcon from "./assets/icons/sun.svg";
 import moonIcon from "./assets/icons/moon.svg";
-import noMobileIcon from "./assets/icons/no-mobile.svg";
 
 // Technology Icons
 import typescriptIcon from "./assets/icons/technologies/typescript.svg";
@@ -42,19 +41,7 @@ import tailwindIcon from "./assets/icons/technologies/tailwind.svg";
 import supabaseIcon from "./assets/icons/technologies/supabase.svg";
 import expoIcon from "./assets/icons/technologies/expo.svg";
 
-const name = ref("Viktor Kratiuk");
-
-// Mobile detection
-const isMobile = ref(false);
-
-const checkMobile = () => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const aspectRatio = width / height;
-
-  // Block if portrait mode or aspect ratio less than or equal to 1.25
-  isMobile.value = width < height || aspectRatio <= 1.25;
-};// Theme management
+const name = ref("Viktor Kratiuk");// Theme management
 const getSystemTheme = () => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches;
 };
@@ -199,9 +186,10 @@ onMounted(async () => {
   // Set initial theme based on system preference
   document.body.classList.toggle('light-theme', !isDarkTheme.value);
 
-  // Check if mobile
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
+  // Show app after Vue is mounted (only if not mobile)
+  if (!document.body.classList.contains('is-mobile')) {
+    document.getElementById('app').style.display = 'block';
+  }
 
   // Handle initial hash if it was saved
   if (window.initialHash) {
@@ -233,205 +221,142 @@ const scrollToSection = (sectionId) => {
 </script>
 
 <template>
-  <div v-if="isMobile" class="mobile-block">
-    <img :src="noMobileIcon" alt="No Mobile" class="mobile-block-icon" />
-    <h1 class="mobile-block-title">Mobile & Tablet Not Supported</h1>
-    <p class="mobile-block-text">This web page is not optimized for mobile phones and tablets. Please visit on a desktop
-      or laptop computer
-    </p>
-  </div>
-  <div v-else>
-    <ParticlesBackground />
-    <div class="portfolio">
-      <!-- Header with navigation -->
-      <header class="header">
-        <nav class="nav">
-          <a @click.prevent="scrollToSection('#contact')" href="#contact" class="nav-link">
-            <img :src="contactsIcon" alt="" class="nav-icon" />
-            Contact
-          </a>
-          <a @click.prevent="scrollToSection('#skills')" href="#skills" class="nav-link">
-            <img :src="skillsIcon" alt="" class="nav-icon" />
-            Skills
-          </a>
-          <a @click.prevent="scrollToSection('#projects')" href="#projects" class="nav-link">
-            <img :src="projectsIcon" alt="" class="nav-icon" />
-            Projects
-          </a>
-        </nav>
-        <div class="header-right">
-          <button @click="toggleTheme" class="theme-toggle"
-            :aria-label="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
-            <img :src="isDarkTheme ? sunIcon : moonIcon" alt="Theme toggle" class="theme-icon" />
-          </button>
-          <a href="https://github.com/kratiuk/portfolio" target="_blank" rel="noopener noreferrer" class="repo-card">
-            <img :src="githubIcon" alt="GitHub" class="repo-icon" />
-            <span class="repo-name">{{ repoInfo.owner }}/{{ repoInfo.repo }}</span>
-            <div class="repo-stats">
-              <span class="stat">
-                <img :src="starIcon" alt="stars" class="stat-icon" />
-                {{ formatNumber(repoInfo.stars) }}
-              </span>
-              <span class="stat">
-                <img :src="forkIcon" alt="forks" class="stat-icon" />
-                {{ formatNumber(repoInfo.forks) }}
-              </span>
-            </div>
-          </a>
-        </div>
-      </header>
+  <ParticlesBackground />
+  <div class="portfolio">
+    <!-- Header with navigation -->
+    <header class="header">
+      <nav class="nav">
+        <a @click.prevent="scrollToSection('#contact')" href="#contact" class="nav-link">
+          <img :src="contactsIcon" alt="" class="nav-icon" />
+          Contact
+        </a>
+        <a @click.prevent="scrollToSection('#skills')" href="#skills" class="nav-link">
+          <img :src="skillsIcon" alt="" class="nav-icon" />
+          Skills
+        </a>
+        <a @click.prevent="scrollToSection('#projects')" href="#projects" class="nav-link">
+          <img :src="projectsIcon" alt="" class="nav-icon" />
+          Projects
+        </a>
+      </nav>
+      <div class="header-right">
+        <button @click="toggleTheme" class="theme-toggle"
+          :aria-label="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
+          <img :src="isDarkTheme ? sunIcon : moonIcon" alt="Theme toggle" class="theme-icon" />
+        </button>
+        <a href="https://github.com/kratiuk/portfolio" target="_blank" rel="noopener noreferrer" class="repo-card">
+          <img :src="githubIcon" alt="GitHub" class="repo-icon" />
+          <span class="repo-name">{{ repoInfo.owner }}/{{ repoInfo.repo }}</span>
+          <div class="repo-stats">
+            <span class="stat">
+              <img :src="starIcon" alt="stars" class="stat-icon" />
+              {{ formatNumber(repoInfo.stars) }}
+            </span>
+            <span class="stat">
+              <img :src="forkIcon" alt="forks" class="stat-icon" />
+              {{ formatNumber(repoInfo.forks) }}
+            </span>
+          </div>
+        </a>
+      </div>
+    </header>
 
-      <section id="contact" class="hero">
-        <img :src="avatar" alt="Avatar" class="avatar" />
-        <h1>{{ name }}</h1>
-        <p class="bio">
-          <span class="bio-text">{{ age }}-year-old Full-Stack Developer from Rivne Oblast, </span>
-          <img :src="ukraineFlag" alt="Ukraine" class="flag" />
-          <span class="bio-text"> Ukraine, currently living in Kaufungen, </span>
-          <img :src="germanyFlag" alt="Germany" class="flag" />
-          <span class="bio-text"> Germany</span>
+    <section id="contact" class="hero">
+      <img :src="avatar" alt="Avatar" class="avatar" />
+      <h1>{{ name }}</h1>
+      <p class="bio">
+        <span class="bio-text">{{ age }}-year-old Full-Stack Developer from Rivne Oblast, </span>
+        <img :src="ukraineFlag" alt="Ukraine" class="flag" />
+        <span class="bio-text"> Ukraine, currently living in Kaufungen, </span>
+        <img :src="germanyFlag" alt="Germany" class="flag" />
+        <span class="bio-text"> Germany</span>
+      </p>
+
+      <!-- Developer platforms -->
+      <div class="socials-section">
+        <div class="socials-group">
+          <h3 class="socials-label">Developer platforms</h3>
+          <div class="socials">
+            <a v-for="social in devPlatforms" :key="social.name" :href="social.url" target="_blank"
+              rel="noopener noreferrer" class="social-icon">
+              <img :src="social.icon" :alt="social.name" />
+            </a>
+          </div>
+        </div>
+
+        <div class="socials-divider"></div>
+
+        <!-- Social networks -->
+        <div class="socials-group">
+          <h3 class="socials-label">Social networks</h3>
+          <div class="socials">
+            <a v-for="social in socialNetworks" :key="social.name" :href="social.url" target="_blank"
+              rel="noopener noreferrer" class="social-icon">
+              <img :src="social.icon" :alt="social.name" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+      <h2 class="section-title">
+        <img :src="skillsIcon" alt="Skills" class="title-icon" />
+        Skills
+      </h2>
+
+      <div class="categories-container">
+        <div v-for="category in skillCategories" :key="category.title" class="skill-category">
+          <h3 class="category-title">{{ category.title }}</h3>
+          <div class="skills-grid">
+            <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
+              <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
+              <span class="skill-name">{{ skill.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+      <h2 class="section-title">
+        <img :src="projectsIcon" alt="Projects" class="title-icon" />
+        Projects
+      </h2>
+
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img :src="commentLinkingImage" alt="Comment Linking" class="project-image" />
+        </div>
+        <h3 class="project-title">Comment Linking</h3>
+        <p class="project-description">
+          Extension for Visual Studio Code that allows you to create anchors and links in comments
+          and navigate between them with ease across your entire codebase
         </p>
 
-        <!-- Developer platforms -->
-        <div class="socials-section">
-          <div class="socials-group">
-            <h3 class="socials-label">Developer platforms</h3>
-            <div class="socials">
-              <a v-for="social in devPlatforms" :key="social.name" :href="social.url" target="_blank"
-                rel="noopener noreferrer" class="social-icon">
-                <img :src="social.icon" :alt="social.name" />
-              </a>
+        <a :href="`https://github.com/${commentLinkingRepoInfo.owner}/${commentLinkingRepoInfo.repo}`" target="_blank"
+          rel="noopener noreferrer" class="repo-card project-repo-card">
+          <img :src="githubIcon" alt="GitHub" class="repo-icon" />
+          <span class="repo-name">{{ commentLinkingRepoInfo.repo }}</span>
+          <div class="repo-stats">
+            <div class="stat">
+              <img :src="starIcon" alt="Stars" class="stat-icon" />
+              <span>{{ formatNumber(commentLinkingRepoInfo.stars) }}</span>
+            </div>
+            <div class="stat">
+              <img :src="forkIcon" alt="Forks" class="stat-icon" />
+              <span>{{ formatNumber(commentLinkingRepoInfo.forks) }}</span>
             </div>
           </div>
-
-          <div class="socials-divider"></div>
-
-          <!-- Social networks -->
-          <div class="socials-group">
-            <h3 class="socials-label">Social networks</h3>
-            <div class="socials">
-              <a v-for="social in socialNetworks" :key="social.name" :href="social.url" target="_blank"
-                rel="noopener noreferrer" class="social-icon">
-                <img :src="social.icon" :alt="social.name" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section id="skills" class="skills-section">
-        <h2 class="section-title">
-          <img :src="skillsIcon" alt="Skills" class="title-icon" />
-          Skills
-        </h2>
-
-        <div class="categories-container">
-          <div v-for="category in skillCategories" :key="category.title" class="skill-category">
-            <h3 class="category-title">{{ category.title }}</h3>
-            <div class="skills-grid">
-              <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <span class="skill-name">{{ skill.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="projects-section">
-        <h2 class="section-title">
-          <img :src="projectsIcon" alt="Projects" class="title-icon" />
-          Projects
-        </h2>
-
-        <div class="project-card">
-          <div class="project-image-wrapper">
-            <img :src="commentLinkingImage" alt="Comment Linking" class="project-image" />
-          </div>
-          <h3 class="project-title">Comment Linking</h3>
-          <p class="project-description">
-            Extension for Visual Studio Code that allows you to create anchors and links in comments
-            and navigate between them with ease across your entire codebase
-          </p>
-
-          <a :href="`https://github.com/${commentLinkingRepoInfo.owner}/${commentLinkingRepoInfo.repo}`" target="_blank"
-            rel="noopener noreferrer" class="repo-card project-repo-card">
-            <img :src="githubIcon" alt="GitHub" class="repo-icon" />
-            <span class="repo-name">{{ commentLinkingRepoInfo.repo }}</span>
-            <div class="repo-stats">
-              <div class="stat">
-                <img :src="starIcon" alt="Stars" class="stat-icon" />
-                <span>{{ formatNumber(commentLinkingRepoInfo.stars) }}</span>
-              </div>
-              <div class="stat">
-                <img :src="forkIcon" alt="Forks" class="stat-icon" />
-                <span>{{ formatNumber(commentLinkingRepoInfo.forks) }}</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-    </div>
+        </a>
+      </div>
+    </section>
   </div>
 </template>
 
 <style scoped>
-/* Mobile Block Screen */
-.mobile-block {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #0a0a0a;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  transform: translateX(-4%);
-  text-align: center;
-  z-index: 9999;
-}
-
-body.light-theme .mobile-block {
-  background-color: #f5f5f5;
-}
-
-.mobile-block-icon {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 2rem;
-  filter: invert(1);
-}
-
-body.light-theme .mobile-block-icon {
-  filter: invert(0);
-}
-
-.mobile-block-title {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0 0 1rem 0;
-}
-
-body.light-theme .mobile-block-title {
-  color: #1a1a1a;
-}
-
-.mobile-block-text {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 400px;
-  margin: 0;
-}
-
-body.light-theme .mobile-block-text {
-  color: rgba(26, 26, 26, 0.7);
-}
-
 .portfolio {
   width: 100%;
   min-height: 100vh;
