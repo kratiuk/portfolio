@@ -186,10 +186,8 @@ onMounted(async () => {
   // Set initial theme based on system preference
   document.body.classList.toggle('light-theme', !isDarkTheme.value);
 
-  // Show app after Vue is mounted (only if not mobile)
-  if (!document.body.classList.contains('is-mobile')) {
-    document.getElementById('app').style.display = 'block';
-  }
+  // Show app after Vue is mounted
+  document.getElementById('app').style.display = 'block';
 
   // Handle initial hash if it was saved
   if (window.initialHash) {

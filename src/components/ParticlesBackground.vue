@@ -134,11 +134,24 @@ onMounted(() => {
     const resize = () => {
         const width = container.value.clientWidth;
         const height = container.value.clientHeight;
+
+        // Skip if container has no dimensions
+        if (width === 0 || height === 0) return;
+
         renderer.setSize(width, height);
         camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
     };
     window.addEventListener('resize', resize);
-    resize();
+
+    // Wait for container to have dimensions
+    const initResize = () => {
+        if (container.value.clientWidth > 0 && container.value.clientHeight > 0) {
+            resize();
+        } else {
+            requestAnimationFrame(initResize);
+        }
+    };
+    initResize();
 
     const handleMouseMove = (e) => {
         const rect = container.value.getBoundingClientRect();
