@@ -71,14 +71,24 @@
   <!-- Mobile detection logic -->
   <script>
     (function () {
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-      var aspectRatio = width / height;
-      var isMobile = width < height || aspectRatio <= 1.25;
+      function checkMobile() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var aspectRatio = width / height;
+        var isMobile = width < height || aspectRatio <= 1.25;
 
-      if (isMobile) {
-        document.documentElement.classList.add('is-mobile');
+        if (isMobile) {
+          document.documentElement.classList.add('is-mobile');
+        } else {
+          document.documentElement.classList.remove('is-mobile');
+        }
       }
+
+      // Initial check
+      checkMobile();
+
+      // Dynamic mobile detection with resize listener
+      window.addEventListener('resize', checkMobile);
     })();
 
     // Store hash and remove it IMMEDIATELY to prevent browser jump
