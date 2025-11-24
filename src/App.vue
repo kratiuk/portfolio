@@ -761,6 +761,10 @@ body.light-theme .skill-item:hover {
   filter: invert(1);
 }
 
+body.light-theme .skill-icon[alt="Expo"] {
+  filter: invert(0);
+}
+
 .skill-name {
   font-weight: 500;
 }
