@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import ParticlesBackground from "./components/ParticlesBackground.vue";
 
 // Avatar
@@ -195,6 +195,14 @@ onMounted(async () => {
       scrollToSection(window.initialHash);
     }, 100);
   }
+
+  // Setup scroll-based URL anchor updates
+  setupScrollObserver();
+});
+
+// Cleanup observer on component unmount
+onUnmounted(() => {
+  cleanupScrollObserver();
 });
 
 const formatNumber = (num) => {
@@ -208,12 +216,54 @@ const scrollToSection = (sectionId) => {
   const element = document.querySelector(sectionId);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // Update URL without triggering browser's default jump
-    if (sectionId === '#skills' || sectionId === '#projects') {
-      history.pushState(null, '', sectionId);
-    } else if (sectionId === '#contact') {
-      history.pushState(null, '', window.location.pathname);
+    // URL is updated automatically by Intersection Observer on scroll
+  }
+};
+
+let sectionObserver = null;
+
+const setupScrollObserver = () => {
+  const sections = ['contact', 'skills', 'projects'];
+
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: '-5% 0px -90% 0px', // Trigger only when section reaches top 5% of viewport
+    threshold: 0
+  };
+
+  sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        const currentHash = window.location.hash.slice(1);
+
+        // Only update if hash actually changed
+        if (currentHash !== sectionId) {
+          if (sectionId === 'contact') {
+            // For contact/hero section, remove hash from URL
+            history.replaceState(null, '', window.location.pathname);
+          } else {
+            // For skills and projects, set the hash
+            history.replaceState(null, '', `#${sectionId}`);
+          }
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections
+  sections.forEach((sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      sectionObserver.observe(element);
     }
+  });
+};
+
+const cleanupScrollObserver = () => {
+  if (sectionObserver) {
+    sectionObserver.disconnect();
+    sectionObserver = null;
   }
 };
 </script>
@@ -297,7 +347,6 @@ const scrollToSection = (sectionId) => {
       </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="skills-section">
       <h2 class="section-title">
         <img :src="skillsIcon" alt="Skills" class="title-icon" />
@@ -317,7 +366,6 @@ const scrollToSection = (sectionId) => {
       </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects-section">
       <h2 class="section-title">
         <img :src="projectsIcon" alt="Projects" class="title-icon" />
@@ -357,9 +405,11 @@ const scrollToSection = (sectionId) => {
 <style scoped>
 .portfolio {
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   overflow-y: auto;
   position: relative;
   z-index: 1;
@@ -652,34 +702,35 @@ body.light-theme .social-icon img {
 /* Skills Section */
 .skills-section {
   width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 2rem;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .section-title {
   font-size: 2.5rem;
   margin: 0 0 2.5rem 0;
   color: #fff;
-  text-align: center;
   margin-top: 2rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-left: -7rem;
-}
-
-body.light-theme .section-title {
-  color: #1a1a1a;
 }
 
 .title-icon {
   width: 2.5rem;
   height: 2.5rem;
   filter: invert(1);
+}
+
+body.light-theme .section-title {
+  color: #1a1a1a;
 }
 
 body.light-theme .title-icon {
@@ -691,7 +742,6 @@ body.light-theme .title-icon {
   gap: 1.5rem;
   width: 100%;
   max-width: 1000px;
-  padding-right: 4rem;
   align-items: center;
 }
 
@@ -772,16 +822,15 @@ body.light-theme .skill-icon[alt="Expo"] {
 /* Projects Section */
 .projects-section {
   width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 2rem;
-}
-
-.projects-section .section-title {
-  margin-left: -7rem;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .project-card {
@@ -792,7 +841,6 @@ body.light-theme .skill-icon[alt="Expo"] {
   padding: 2rem;
   max-width: 600px;
   text-align: center;
-  margin-left: -6rem;
 }
 
 body.light-theme .project-card {
@@ -804,12 +852,13 @@ body.light-theme .project-card {
   margin-bottom: 1.5rem;
   display: inline-block;
   transform: scale(1.3);
+  max-width: 100%;
 }
 
 .project-image {
   width: auto;
   height: auto;
-  max-width: 120%;
+  max-width: 100%;
   border-radius: 4px;
   image-rendering: auto;
   display: block;
