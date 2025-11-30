@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import ParticlesBackground from "./components/ParticlesBackground.vue";
 import SectionTitle from "./components/SectionTitle.vue";
+import RepoCard from "./components/RepoCard.vue";
 
 // Avatar
 import avatar from "./assets/images/avatar.webp";
@@ -17,8 +18,6 @@ import blueskyIcon from "./assets/icons/brands/bluesky.svg";
 import wakatimeIcon from "./assets/icons/brands/wakatime.svg";
 
 // System Icons
-import starIcon from "./assets/icons/github-star.svg";
-import forkIcon from "./assets/icons/github-fork.svg";
 import ukraineFlag from "./assets/icons/flags/ukraine-flag.svg";
 import germanyFlag from "./assets/icons/flags/germany-flag.svg";
 
@@ -205,13 +204,6 @@ onUnmounted(() => {
   cleanupScrollObserver();
 });
 
-const formatNumber = (num) => {
-  if (num >= 1000) {
-    return (num / 1000).toFixed(1) + "k";
-  }
-  return num.toString();
-};
-
 const scrollToSection = (sectionId) => {
   const element = document.querySelector(sectionId);
   if (element) {
@@ -292,20 +284,7 @@ const cleanupScrollObserver = () => {
           :aria-label="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
           <img :src="isDarkTheme ? sunIcon : moonIcon" alt="Theme toggle" class="theme-icon" />
         </button>
-        <a href="https://github.com/kratiuk/portfolio" target="_blank" rel="noopener noreferrer" class="repo-card">
-          <img :src="githubIcon" alt="GitHub" class="repo-icon" />
-          <span class="repo-name">{{ repoInfo.owner }}/{{ repoInfo.repo }}</span>
-          <div class="repo-stats">
-            <span class="stat">
-              <img :src="starIcon" alt="stars" class="stat-icon" />
-              {{ formatNumber(repoInfo.stars) }}
-            </span>
-            <span class="stat">
-              <img :src="forkIcon" alt="forks" class="stat-icon" />
-              {{ formatNumber(repoInfo.forks) }}
-            </span>
-          </div>
-        </a>
+        <RepoCard :owner="repoInfo.owner" :repo="repoInfo.repo" :stars="repoInfo.stars" :forks="repoInfo.forks" />
       </div>
     </header>
 
@@ -376,21 +355,9 @@ const cleanupScrollObserver = () => {
           and navigate between them with ease across your entire codebase
         </p>
 
-        <a :href="`https://github.com/${commentLinkingRepoInfo.owner}/${commentLinkingRepoInfo.repo}`" target="_blank"
-          rel="noopener noreferrer" class="repo-card project-repo-card">
-          <img :src="githubIcon" alt="GitHub" class="repo-icon" />
-          <span class="repo-name">{{ commentLinkingRepoInfo.repo }}</span>
-          <div class="repo-stats">
-            <div class="stat">
-              <img :src="starIcon" alt="Stars" class="stat-icon" />
-              <span>{{ formatNumber(commentLinkingRepoInfo.stars) }}</span>
-            </div>
-            <div class="stat">
-              <img :src="forkIcon" alt="Forks" class="stat-icon" />
-              <span>{{ formatNumber(commentLinkingRepoInfo.forks) }}</span>
-            </div>
-          </div>
-        </a>
+        <RepoCard :owner="commentLinkingRepoInfo.owner" :repo="commentLinkingRepoInfo.repo"
+          :stars="commentLinkingRepoInfo.stars" :forks="commentLinkingRepoInfo.forks" :showOwner="true"
+          class="project-repo-card" />
       </div>
     </section>
   </div>
@@ -497,73 +464,6 @@ body.light-theme .theme-toggle:hover {
 }
 
 body.light-theme .theme-icon {
-  filter: invert(0);
-}
-
-.repo-card {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-body.light-theme .repo-card {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #1a1a1a;
-}
-
-.repo-card:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-body.light-theme .repo-card:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.repo-icon {
-  width: 24px;
-  height: 24px;
-  filter: invert(1);
-}
-
-body.light-theme .repo-icon {
-  filter: invert(0);
-}
-
-.repo-name {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.repo-stats {
-  display: flex;
-  gap: 1rem;
-  margin-left: 0.5rem;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-.stat-icon {
-  width: 14px;
-  height: 14px;
-  filter: invert(1);
-}
-
-body.light-theme .stat-icon {
   filter: invert(0);
 }
 
