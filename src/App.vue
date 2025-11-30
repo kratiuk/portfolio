@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import ParticlesBackground from "./components/ParticlesBackground.vue";
+import SectionTitle from "./components/SectionTitle.vue";
 
 // Avatar
 import avatar from "./assets/images/avatar.webp";
@@ -76,7 +77,6 @@ const calculateAge = () => {
 };
 
 const age = ref(calculateAge());
-const bio = ref(`${age.value}-year-old Full-Stack Developer from Rivne Oblast, Ukraine, currently living in Kaufungen, Germany`);
 
 // Developer platforms
 const devPlatforms = [
@@ -348,10 +348,7 @@ const cleanupScrollObserver = () => {
     </section>
 
     <section id="skills" class="skills-section">
-      <h2 class="section-title">
-        <img :src="skillsIcon" alt="Skills" class="title-icon" />
-        Skills
-      </h2>
+      <SectionTitle title="Skills" />
 
       <div class="categories-container">
         <div v-for="category in skillCategories" :key="category.title" class="skill-category">
@@ -367,10 +364,7 @@ const cleanupScrollObserver = () => {
     </section>
 
     <section id="projects" class="projects-section">
-      <h2 class="section-title">
-        <img :src="projectsIcon" alt="Projects" class="title-icon" />
-        Projects
-      </h2>
+      <SectionTitle title="Projects" />
 
       <div class="project-card">
         <div class="project-image-wrapper">
@@ -711,30 +705,6 @@ body.light-theme .social-icon img {
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  margin: 0 0 2.5rem 0;
-  color: #fff;
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.title-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  filter: invert(1);
-}
-
-body.light-theme .section-title {
-  color: #1a1a1a;
-}
-
-body.light-theme .title-icon {
-  filter: invert(0);
 }
 
 .categories-container {
