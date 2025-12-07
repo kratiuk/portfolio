@@ -7,7 +7,6 @@ defineProps({
 });
 </script>
 
-<!-- SectionTitle component -->
 <template>
     <h2 class="section-title">
         {{ title }}

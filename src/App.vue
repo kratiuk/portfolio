@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import ParticlesBackground from "./components/ParticlesBackground.vue";
 import SectionTitle from "./components/SectionTitle.vue";
 import RepoCard from "./components/RepoCard.vue";
+import Footer from "./components/Footer.vue";
 
 // Avatar
 import avatar from "./assets/images/avatar.webp";
@@ -260,6 +261,7 @@ const cleanupScrollObserver = () => {
 };
 </script>
 
+<!-- Website template -->
 <template>
   <ParticlesBackground />
   <div class="portfolio">
@@ -360,6 +362,8 @@ const cleanupScrollObserver = () => {
           class="project-repo-card" />
       </div>
     </section>
+
+    <Footer />
   </div>
 </template>
 

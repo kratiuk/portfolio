@@ -27,7 +27,6 @@
       display: flex !important;
     }
 
-    /* Mobile warning styles */
     #mobile-warning {
       display: none;
       position: fixed;
@@ -68,7 +67,6 @@
     }
   </style>
 
-  <!-- Mobile detection logic -->
   <script>
     (function () {
       function checkMobile() {
@@ -87,7 +85,6 @@
       // Initial check
       checkMobile();
 
-      // Dynamic mobile detection with resize listener
       window.addEventListener('resize', checkMobile);
     })();
 

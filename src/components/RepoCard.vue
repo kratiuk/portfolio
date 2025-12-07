@@ -34,7 +34,6 @@ const formatNumber = (num) => {
 };
 </script>
 
-<!-- RepoCard component -->
 <template>
     <a :href="`https://github.com/${owner}/${repo}`" target="_blank" rel="noopener noreferrer" class="repo-card">
         <img :src="githubIcon" alt="GitHub" class="repo-icon" />
