@@ -132,14 +132,15 @@ const techStack = [
 }
 
 body.light-theme .footer {
-    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 body.light-theme .fonts-info a {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 body.light-theme .fonts-info a:hover {
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.9);
 }
 </style>
