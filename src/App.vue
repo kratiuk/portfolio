@@ -4,6 +4,7 @@ import ParticlesBackground from "./components/ParticlesBackground.vue";
 import SectionTitle from "./components/SectionTitle.vue";
 import RepoCard from "./components/RepoCard.vue";
 import Footer from "./components/Footer.vue";
+import SkillCategory from "./components/SkillCategory.vue";
 
 // Avatar
 import avatar from "./assets/images/avatar.webp";
@@ -118,7 +119,7 @@ const skillCategories = [
     skills: [
       { name: "Flutter", icon: flutterIcon },
       { name: "React Native", icon: reactIcon },
-      { name: "Expo", icon: expoIcon },
+      { name: "Expo", icon: expoIcon, invertOnDark: true },
     ]
   },
   {
@@ -332,15 +333,9 @@ const cleanupScrollObserver = () => {
       <SectionTitle title="Skills" />
 
       <div class="categories-container">
-        <div v-for="category in skillCategories" :key="category.title" class="skill-category">
-          <h3 class="category-title">{{ category.title }}</h3>
-          <div class="skills-grid">
-            <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
-              <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-              <span class="skill-name">{{ skill.name }}</span>
-            </div>
-          </div>
-        </div>
+        <!-- Generates skill category blocks for each category in skillCategories -->
+        <SkillCategory v-for="category in skillCategories" :key="category.title" :title="category.title"
+          :skills="category.skills" />
       </div>
     </section>
 
@@ -617,80 +612,6 @@ body.light-theme .social-icon img {
   width: 100%;
   max-width: 1000px;
   align-items: center;
-}
-
-.skill-category {
-  flex: 1;
-  min-width: 0;
-}
-
-.category-title {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 0.75rem;
-  text-align: center;
-}
-
-body.light-theme .category-title {
-  color: rgba(26, 26, 26, 0.7);
-}
-
-.skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  min-height: 120px;
-}
-
-.skill-item {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: #fff;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-}
-
-body.light-theme .skill-item {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #1a1a1a;
-}
-
-.skill-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-body.light-theme .skill-item:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.skill-icon {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-
-.skill-icon[alt="Expo"] {
-  filter: invert(1);
-}
-
-body.light-theme .skill-icon[alt="Expo"] {
-  filter: invert(0);
-}
-
-.skill-name {
-  font-weight: 500;
 }
 
 /* Projects Section */
