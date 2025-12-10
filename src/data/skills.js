@@ -1,6 +1,7 @@
 import dartIcon from "@/assets/icons/technologies/dart.svg";
 import expoIcon from "@/assets/icons/technologies/expo.svg";
 import flutterIcon from "@/assets/icons/technologies/flutter.svg";
+import goIcon from "@/assets/icons/technologies/go.svg";
 import javascriptIcon from "@/assets/icons/technologies/javascript.svg";
 import nextjsIcon from "@/assets/icons/technologies/nextjs.svg";
 import pythonIcon from "@/assets/icons/technologies/python.svg";
@@ -18,6 +19,7 @@ export const skillCategories = [
       { name: "JavaScript", icon: javascriptIcon },
       { name: "Python", icon: pythonIcon },
       { name: "Dart", icon: dartIcon },
+      { name: "Go", icon: goIcon },
     ],
   },
   {

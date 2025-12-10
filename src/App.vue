@@ -564,6 +564,7 @@ body.light-theme .social-icon img {
   width: 100%;
   max-width: 1000px;
   align-items: center;
+  margin-top: -1rem;
 }
 
 /* Projects Section */
