@@ -5,6 +5,7 @@ import SectionTitle from "./components/SectionTitle.vue";
 import RepoCard from "./components/RepoCard.vue";
 import Footer from "./components/Footer.vue";
 import SkillCategory from "./components/SkillCategory.vue";
+import { skillCategories } from "./data/skills.js";
 
 // Avatar
 import avatar from "./assets/images/avatar.webp";
@@ -29,19 +30,6 @@ import skillsIcon from "./assets/icons/skills.svg";
 import projectsIcon from "./assets/icons/projects.svg";
 import sunIcon from "./assets/icons/sun.svg";
 import moonIcon from "./assets/icons/moon.svg";
-
-// Technology Icons
-import typescriptIcon from "./assets/icons/technologies/typescript.svg";
-import javascriptIcon from "./assets/icons/technologies/javascript.svg";
-import pythonIcon from "./assets/icons/technologies/python.svg";
-import dartIcon from "./assets/icons/technologies/dart.svg";
-import vueIcon from "./assets/icons/technologies/vue.svg";
-import reactIcon from "./assets/icons/technologies/react.svg";
-import nextjsIcon from "./assets/icons/technologies/nextjs.svg";
-import flutterIcon from "./assets/icons/technologies/flutter.svg";
-import tailwindIcon from "./assets/icons/technologies/tailwind.svg";
-import supabaseIcon from "./assets/icons/technologies/supabase.svg";
-import expoIcon from "./assets/icons/technologies/expo.svg";
 
 const name = ref("Viktor Kratiuk");// Theme management
 const getSystemTheme = () => {
@@ -92,42 +80,6 @@ const socialNetworks = [
   { name: "Twitter", icon: twitterIcon, url: "https://x.com/viktorkratiuk" },
   { name: "Bluesky", icon: blueskyIcon, url: "https://bsky.app/profile/kratiuk.bsky.social" },
   { name: "LinkedIn", icon: linkedinIcon, url: "https://www.linkedin.com/in/viktorkratiuk" },
-];
-
-// Skills by categories
-const skillCategories = [
-  {
-    title: "Programming Languages",
-    skills: [
-      { name: "TypeScript", icon: typescriptIcon },
-      { name: "JavaScript", icon: javascriptIcon },
-      { name: "Python", icon: pythonIcon },
-      { name: "Dart", icon: dartIcon },
-    ]
-  },
-  {
-    title: "Frontend",
-    skills: [
-      { name: "Vue.js", icon: vueIcon },
-      { name: "React", icon: reactIcon },
-      { name: "Next.js", icon: nextjsIcon },
-      { name: "Tailwind CSS", icon: tailwindIcon },
-    ]
-  },
-  {
-    title: "Mobile",
-    skills: [
-      { name: "Flutter", icon: flutterIcon },
-      { name: "React Native", icon: reactIcon },
-      { name: "Expo", icon: expoIcon, invertOnDark: true },
-    ]
-  },
-  {
-    title: "Backend",
-    skills: [
-      { name: "Supabase", icon: supabaseIcon },
-    ]
-  },
 ];
 
 // GitHub repo info
