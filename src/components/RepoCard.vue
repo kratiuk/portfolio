@@ -1,7 +1,9 @@
 <script setup>
-import githubIcon from "../assets/icons/brands/github.svg";
-import starIcon from "../assets/icons/github-star.svg";
-import forkIcon from "../assets/icons/github-fork.svg";
+
+import githubIcon from "@assets/icons/brands/github.svg";
+import starIcon from "@assets/icons/github-star.svg";
+import forkIcon from "@assets/icons/github-fork.svg";
+import tagIcon from "@assets/icons/github-tag.svg";
 
 const props = defineProps({
     owner: {
@@ -23,6 +25,10 @@ const props = defineProps({
     showOwner: {
         type: Boolean,
         default: true,
+    },
+    tag: {
+        type: String,
+        default: '',
     },
 });
 
@@ -46,6 +52,12 @@ const formatNumber = (num) => {
             <span class="stat">
                 <img :src="forkIcon" alt="forks" class="stat-icon" />
                 {{ formatNumber(forks) }}
+            </span>
+            <span class="stat">
+                <img :src="tagIcon" alt="tag" class="stat-icon" />
+                <template v-if="tag && tag.length">
+                    {{ tag }}
+                </template>
             </span>
         </div>
     </a>
