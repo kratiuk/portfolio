@@ -1,62 +1,58 @@
 <script setup>
 
+import { ref, onMounted } from "vue";
+
+import { fetchGithubRepoInfo } from "@/data/github.js";
+
 import githubIcon from "@assets/icons/brands/github.svg";
 import starIcon from "@assets/icons/github-star.svg";
 import forkIcon from "@assets/icons/github-fork.svg";
 import tagIcon from "@assets/icons/github-tag.svg";
 
 const props = defineProps({
-    owner: {
-        type: String,
-        required: true,
-    },
-    repo: {
-        type: String,
-        required: true,
-    },
-    stars: {
-        type: Number,
-        default: 0,
-    },
-    forks: {
-        type: Number,
-        default: 0,
-    },
-    showOwner: {
-        type: Boolean,
-        default: true,
-    },
-    tag: {
-        type: String,
-        default: '',
-    },
+    url: { type: String, required: true },
+    showOwner: { type: Boolean, default: true },
 });
 
-const formatNumber = (num) => {
-    if (num >= 1000) {
-        return (num / 1000).toFixed(1) + "k";
+const info = ref({ owner: '', repo: '', stars: 0, forks: 0, tag: '' });
+
+const formatNumber = (num) => num >= 1000 ? (num / 1000).toFixed(1) + "k" : num.toString();
+
+onMounted(async () => {
+    try {
+        const url = new URL(props.url);
+        const [owner, repo] = url.pathname.replace(/^\//, '').split('/');
+        if (owner && repo) {
+            const data = await fetchGithubRepoInfo(owner, repo);
+            if (data) Object.assign(info.value, data);
+        }
+    } catch (e) {
+        console.error('RepoCard fetch error:', e);
     }
-    return num.toString();
-};
+});
 </script>
 
 <template>
-    <a :href="`https://github.com/${owner}/${repo}`" target="_blank" rel="noopener noreferrer" class="repo-card">
+    <a :href="props.url" target="_blank" rel="noopener noreferrer" class="repo-card">
         <img :src="githubIcon" alt="GitHub" class="repo-icon" />
-        <span class="repo-name">{{ showOwner ? `${owner}/${repo}` : repo }}</span>
+        <span class="repo-name">
+            <template v-if="props.showOwner && info.owner && info.repo">{{ info.owner + '/' + info.repo }}</template>
+            <template v-else-if="info.repo">{{ info.repo }}</template>
+            <template v-else>{{ props.url }}</template>
+        </span>
         <div class="repo-stats">
             <span class="stat">
                 <img :src="starIcon" alt="stars" class="stat-icon" />
-                {{ formatNumber(stars) }}
+                {{ formatNumber(info.stars) }}
             </span>
             <span class="stat">
                 <img :src="forkIcon" alt="forks" class="stat-icon" />
-                {{ formatNumber(forks) }}
+                {{ formatNumber(info.forks) }}
             </span>
             <span class="stat">
                 <img :src="tagIcon" alt="tag" class="stat-icon" />
-                <template v-if="tag && tag.length">
-                    {{ tag }}
+                <template v-if="info.tag && info.tag.length">
+                    {{ info.tag }}
                 </template>
             </span>
         </div>

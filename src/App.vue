@@ -82,88 +82,7 @@ const socialNetworks = [
   { name: "LinkedIn", icon: linkedinIcon, url: "https://www.linkedin.com/in/viktorkratiuk" },
 ];
 
-// GitHub repo info
-const repoInfo = ref({
-  owner: "kratiuk",
-  repo: "portfolio",
-  stars: 0,
-  forks: 0,
-  tag: '',
-  loading: true,
-});
-
-const commentLinkingRepoInfo = ref({
-  owner: "kratiuk",
-  repo: "commentlinking",
-  stars: 0,
-  forks: 0,
-  tag: '',
-  loading: true,
-});
-
 onMounted(async () => {
-  // Fetch GitHub repo info
-  try {
-    const response = await fetch(
-      "https://api.github.com/repos/kratiuk/portfolio"
-    );
-    const data = await response.json();
-    let tag = '';
-    try {
-      const tagsResponse = await fetch(
-        "https://api.github.com/repos/kratiuk/portfolio/tags?per_page=1"
-      );
-      const tagsData = await tagsResponse.json();
-      if (Array.isArray(tagsData) && tagsData.length > 0) {
-        tag = tagsData[0].name;
-      }
-    } catch (tagErr) {
-      console.error("Failed to fetch portfolio tags:", tagErr);
-    }
-    repoInfo.value = {
-      owner: "kratiuk",
-      repo: "portfolio",
-      stars: data.stargazers_count,
-      forks: data.forks_count,
-      tag,
-      loading: false,
-    };
-  } catch (error) {
-    console.error("Failed to fetch repo info:", error);
-    repoInfo.value.loading = false;
-  }
-
-  // Fetch Comment Linking repo info
-  try {
-    const response = await fetch(
-      "https://api.github.com/repos/kratiuk/commentlinking"
-    );
-    const data = await response.json();
-    let tag = '';
-    try {
-      const tagsResponse = await fetch(
-        "https://api.github.com/repos/kratiuk/commentlinking/tags?per_page=1"
-      );
-      const tagsData = await tagsResponse.json();
-      if (Array.isArray(tagsData) && tagsData.length > 0) {
-        tag = tagsData[0].name;
-      }
-    } catch (tagErr) {
-      console.error("Failed to fetch commentlinking tags:", tagErr);
-    }
-    commentLinkingRepoInfo.value = {
-      owner: "kratiuk",
-      repo: "commentlinking",
-      stars: data.stargazers_count,
-      forks: data.forks_count,
-      tag,
-      loading: false,
-    };
-  } catch (error) {
-    console.error("Failed to fetch Comment Linking repo info:", error);
-    commentLinkingRepoInfo.value.loading = false;
-  }
-
   // Set initial theme based on system preference
   document.body.classList.toggle('light-theme', !isDarkTheme.value);
 
@@ -267,7 +186,7 @@ const cleanupScrollObserver = () => {
           :aria-label="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
           <img :src="isDarkTheme ? sunIcon : moonIcon" alt="Theme toggle" class="theme-icon" />
         </button>
-        <RepoCard :owner="repoInfo.owner" :repo="repoInfo.repo" :stars="repoInfo.stars" :forks="repoInfo.forks" :tag="repoInfo.tag" />
+        <RepoCard url="https://github.com/kratiuk/portfolio" :showOwner="true" />
       </div>
     </header>
 
@@ -332,9 +251,7 @@ const cleanupScrollObserver = () => {
           and navigate between them with ease across your entire codebase
         </p>
 
-        <RepoCard :owner="commentLinkingRepoInfo.owner" :repo="commentLinkingRepoInfo.repo"
-          :stars="commentLinkingRepoInfo.stars" :forks="commentLinkingRepoInfo.forks" :tag="commentLinkingRepoInfo.tag" :showOwner="true"
-          class="project-repo-card" />
+        <RepoCard url="https://github.com/kratiuk/commentlinking" :showOwner="true" class="project-repo-card" />
       </div>
     </section>
 
