@@ -15,16 +15,30 @@ const props = defineProps({
 });
 
 const info = ref({ owner: '', repo: '', stars: 0, forks: 0, tag: '' });
+const statsReady = ref(false);
 
-const formatNumber = (num) => num >= 1000 ? (num / 1000).toFixed(1) + "k" : num.toString();
+try {
+    const url = new URL(props.url);
+    const [owner, repo] = url.pathname.replace(/^\//, '').split('/');
+    if (owner && repo) {
+        info.value.owner = owner;
+        info.value.repo = repo;
+    }
+} catch (e) {
+    console.error('RepoCard parse error:', e);
+}
+
+const formatNumber = (num) => (num ?? 0) >= 1000 ? ((num ?? 0) / 1000).toFixed(1) + "k" : (num ?? 0).toString();
 
 onMounted(async () => {
     try {
-        const url = new URL(props.url);
-        const [owner, repo] = url.pathname.replace(/^\//, '').split('/');
+        const { owner, repo } = info.value;
         if (owner && repo) {
             const data = await fetchGithubRepoInfo(owner, repo);
-            if (data) Object.assign(info.value, data);
+            if (data) {
+                Object.assign(info.value, data);
+                statsReady.value = true;
+            }
         }
     } catch (e) {
         console.error('RepoCard fetch error:', e);
@@ -33,12 +47,11 @@ onMounted(async () => {
 </script>
 
 <template>
-    <a :href="props.url" target="_blank" rel="noopener noreferrer" class="repo-card">
+    <a :href="props.url" target="_blank" rel="noopener noreferrer" class="repo-card" :class="{ 'repo-card--ready': statsReady }">
         <img :src="githubIcon" alt="GitHub" class="repo-icon" />
         <span class="repo-name">
             <template v-if="props.showOwner && info.owner && info.repo">{{ info.owner + '/' + info.repo }}</template>
             <template v-else-if="info.repo">{{ info.repo }}</template>
-            <template v-else>{{ props.url }}</template>
         </span>
         <div class="repo-stats">
             <span class="stat">
@@ -108,7 +121,19 @@ body.light-theme .repo-icon {
 .repo-stats {
     display: flex;
     gap: 1rem;
+    margin-left: 0;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(-4px);
+    transition: max-width 0.35s ease, opacity 0.25s ease, transform 0.35s ease, margin-left 0.35s ease;
+}
+
+.repo-card--ready .repo-stats {
     margin-left: 0.5rem;
+    max-width: 240px;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .stat {
