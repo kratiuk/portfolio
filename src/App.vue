@@ -5,6 +5,7 @@ import SectionTitle from "./components/SectionTitle.vue";
 import RepoCard from "./components/RepoCard.vue";
 import Footer from "./components/Footer.vue";
 import SkillCategory from "./components/SkillCategory.vue";
+import PlatformsGroup from "./components/PlatformsGroup.vue";
 import { skillCategories } from "./data/skills.js";
 import { devPlatforms, socialNetworks } from "./data/platforms.js";
 
@@ -178,30 +179,12 @@ const cleanupScrollObserver = () => {
         <span class="bio-text"> Germany</span>
       </p>
 
-      <!-- Developer platforms -->
       <div class="socials-section">
-        <div class="socials-group">
-          <h3 class="socials-label">Developer platforms</h3>
-          <div class="socials">
-            <a v-for="social in devPlatforms" :key="social.name" :href="social.url" target="_blank"
-              rel="noopener noreferrer" class="social-icon">
-              <img :src="social.icon" :alt="social.name" />
-            </a>
-          </div>
-        </div>
+        <PlatformsGroup label="Developer platforms" :items="devPlatforms" />
 
         <div class="socials-divider"></div>
 
-        <!-- Social networks -->
-        <div class="socials-group">
-          <h3 class="socials-label">Social networks</h3>
-          <div class="socials">
-            <a v-for="social in socialNetworks" :key="social.name" :href="social.url" target="_blank"
-              rel="noopener noreferrer" class="social-icon">
-              <img :src="social.icon" :alt="social.name" />
-            </a>
-          </div>
-        </div>
+        <PlatformsGroup label="Social networks" :items="socialNetworks" />
       </div>
     </section>
 
@@ -409,13 +392,6 @@ body.light-theme .avatar {
   align-items: center;
 }
 
-.socials-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-}
-
 .socials-divider {
   width: 1px;
   height: 60px;
@@ -424,46 +400,6 @@ body.light-theme .avatar {
 
 body.light-theme .socials-divider {
   background: rgba(0, 0, 0, 0.2);
-}
-
-.socials-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0;
-  font-weight: 400;
-  text-transform: lowercase;
-}
-
-body.light-theme .socials-label {
-  color: rgba(26, 26, 26, 0.6);
-}
-
-.socials {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.social-icon {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-
-.social-icon:hover {
-  transform: translateY(-3px);
-}
-
-.social-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: invert(1);
-}
-
-body.light-theme .social-icon img {
-  filter: invert(0);
 }
 
 /* Skills Section */
