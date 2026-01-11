@@ -1,5 +1,5 @@
 export async function fetchGithubRepoInfo(owner, repo) {
-  const baseUrl = '/api';
+  const baseUrl = import.meta.env.DEV ? '/api' : 'https://api.kratiuk.me';
   const endpoint =
     repo === 'commentlinking'
       ? `${baseUrl}/commentlinking/github/repo-info`
