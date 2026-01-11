@@ -1,16 +1,19 @@
 export async function fetchGithubRepoInfo(owner, repo) {
-  const [repoRes, tagsRes] = await Promise.all([
-    fetch(`https://api.github.com/repos/${owner}/${repo}`),
-    fetch(`https://api.github.com/repos/${owner}/${repo}/tags?per_page=1`)
-  ]);
+  const baseUrl = '/api';
+  const endpoint =
+    repo === 'commentlinking'
+      ? `${baseUrl}/commentlinking/github/repo-info`
+      : repo === 'portfolio'
+        ? `${baseUrl}/portfolio/github/repo-info`
+        : `${baseUrl}/commentlinking/github/repo-info`;
+  const repoRes = await fetch(endpoint);
   const repoData = await repoRes.json();
-  const tagsData = await tagsRes.json();
   return {
     owner,
     repo,
-    stars: repoData.stargazers_count,
-    forks: repoData.forks_count,
-    tag: Array.isArray(tagsData) && tagsData.length > 0 ? tagsData[0].name : '',
+    stars: repoData.stars,
+    forks: repoData.forks,
+    tag: repoData.latestTag || '',
     loading: false
   };
 }
