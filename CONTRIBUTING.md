@@ -41,6 +41,10 @@ Use Conventional Commits format:
 type(scope): description
 ```
 
+## ✅ Linting
+
+Pre-commit hook runs `pnpm lint` automatically. Ensure linting passes before committing
+
 ## 🚀 Release
 
 To create a release, push a version tag without `v` prefix (this prevents an infinite loop in CI, and ensures the final v-prefixed tag is created by the bot, so the release belongs to the bot):
