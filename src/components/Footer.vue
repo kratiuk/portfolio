@@ -1,9 +1,10 @@
 <script setup>
-import vueIcon from "../assets/icons/technologies/vue.svg";
-import javascriptIcon from "../assets/icons/technologies/javascript.svg";
-import htmlIcon from "../assets/icons/technologies/html.svg";
-import cssIcon from "../assets/icons/technologies/css.svg";
-import packageJson from "../../package.json";
+import cssIcon from "@assets/icons/technologies/css.svg";
+import htmlIcon from "@assets/icons/technologies/html.svg";
+import javascriptIcon from "@assets/icons/technologies/javascript.svg";
+import vueIcon from "@assets/icons/technologies/vue.svg";
+
+import packageJson from "@root/package.json";
 
 const currentYear = new Date().getFullYear();
 const version = packageJson.version;

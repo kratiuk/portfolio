@@ -1,10 +1,10 @@
-import githubIcon from "@/assets/icons/brands/github.svg";
-import gitlabIcon from "@/assets/icons/brands/gitlab.svg";
-import huggingFaceIcon from "@/assets/icons/brands/hugging-face.svg";
-import telegramIcon from "@/assets/icons/brands/telegram.svg";
-import wakatimeIcon from "@/assets/icons/brands/wakatime.svg";
-import xIcon from "@/assets/icons/brands/x.svg";
-import youtubeIcon from "@/assets/icons/brands/youtube.svg";
+import githubIcon from "@assets/icons/brands/github.svg";
+import gitlabIcon from "@assets/icons/brands/gitlab.svg";
+import huggingFaceIcon from "@assets/icons/brands/hugging-face.svg";
+import telegramIcon from "@assets/icons/brands/telegram.svg";
+import wakatimeIcon from "@assets/icons/brands/wakatime.svg";
+import xIcon from "@assets/icons/brands/x.svg";
+import youtubeIcon from "@assets/icons/brands/youtube.svg";
 
 export const devPlatforms = [
   { name: "GitHub", icon: githubIcon, url: "https://github.com/kratiuk" },

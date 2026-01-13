@@ -2,7 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@app": ["src/App.vue"],
+      "@components/*": ["src/components/*"],
+      "@data/*": ["src/data/*"],
+      "@assets/*": ["src/assets/*"],
+      "@root/*": ["./*"]
     }
   },
   "include": ["src/**/*"]

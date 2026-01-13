@@ -1,15 +1,15 @@
-import dartIcon from "@/assets/icons/technologies/dart.svg";
-import expoIcon from "@/assets/icons/technologies/expo.svg";
-import flutterIcon from "@/assets/icons/technologies/flutter.svg";
-import goIcon from "@/assets/icons/technologies/go.svg";
-import javascriptIcon from "@/assets/icons/technologies/javascript.svg";
-import nextjsIcon from "@/assets/icons/technologies/nextjs.svg";
-import pythonIcon from "@/assets/icons/technologies/python.svg";
-import reactIcon from "@/assets/icons/technologies/react.svg";
-import supabaseIcon from "@/assets/icons/technologies/supabase.svg";
-import tailwindIcon from "@/assets/icons/technologies/tailwind.svg";
-import typescriptIcon from "@/assets/icons/technologies/typescript.svg";
-import vueIcon from "@/assets/icons/technologies/vue.svg";
+import dartIcon from "@assets/icons/technologies/dart.svg";
+import expoIcon from "@assets/icons/technologies/expo.svg";
+import flutterIcon from "@assets/icons/technologies/flutter.svg";
+import goIcon from "@assets/icons/technologies/go.svg";
+import javascriptIcon from "@assets/icons/technologies/javascript.svg";
+import nextjsIcon from "@assets/icons/technologies/nextjs.svg";
+import pythonIcon from "@assets/icons/technologies/python.svg";
+import reactIcon from "@assets/icons/technologies/react.svg";
+import supabaseIcon from "@assets/icons/technologies/supabase.svg";
+import tailwindIcon from "@assets/icons/technologies/tailwind.svg";
+import typescriptIcon from "@assets/icons/technologies/typescript.svg";
+import vueIcon from "@assets/icons/technologies/vue.svg";
 
 export const skillCategories = [
   {

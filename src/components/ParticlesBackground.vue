@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
+import { onMounted, onUnmounted, ref } from "vue";
+import { Camera, Geometry, Mesh, Program, Renderer } from "ogl";
 
 const container = ref(null);
 
@@ -101,7 +101,7 @@ const props = {
 
 let renderer, camera, particles, animationFrameId;
 const mouseRef = { x: 0, y: 0 };
-let geometry, colorAttribute;
+let colorAttribute;
 
 const updateParticleColors = () => {
     const isLight = document.body.classList.contains('light-theme');

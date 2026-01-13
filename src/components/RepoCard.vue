@@ -1,13 +1,12 @@
 <script setup>
-
-import { ref, onMounted } from "vue";
-
-import { fetchGithubRepoInfo } from "@/data/github.js";
+import { onMounted, ref } from "vue";
 
 import githubIcon from "@assets/icons/brands/github.svg";
-import starIcon from "@assets/icons/github-star.svg";
 import forkIcon from "@assets/icons/github-fork.svg";
+import starIcon from "@assets/icons/github-star.svg";
 import tagIcon from "@assets/icons/github-tag.svg";
+
+import { fetchGithubRepoInfo } from "@data/github.js";
 
 const props = defineProps({
     url: { type: String, required: true },

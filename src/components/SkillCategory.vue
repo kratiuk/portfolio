@@ -1,5 +1,5 @@
 <script setup>
-import SkillItem from "./SkillItem.vue";
+import SkillItem from "@components/SkillItem.vue";
 
 defineProps({
     title: {

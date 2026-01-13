@@ -1,28 +1,25 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import ParticlesBackground from "./components/ParticlesBackground.vue";
-import SectionTitle from "./components/SectionTitle.vue";
-import RepoCard from "./components/RepoCard.vue";
-import Footer from "./components/Footer.vue";
-import SkillCategory from "./components/SkillCategory.vue";
-import PlatformsGroup from "./components/PlatformsGroup.vue";
-import { skillCategories } from "./data/skills.js";
-import { devPlatforms, socialNetworks } from "./data/platforms.js";
+import { onMounted, onUnmounted, ref } from "vue";
 
-// Avatar
-import avatar from "./assets/images/avatar.webp";
-import commentLinkingImage from "./assets/images/commentlinking.webp";
+import contactsIcon from "@assets/icons/contacts.svg";
+import germanyFlag from "@assets/icons/flags/germany-flag.svg";
+import ukraineFlag from "@assets/icons/flags/ukraine-flag.svg";
+import moonIcon from "@assets/icons/moon.svg";
+import projectsIcon from "@assets/icons/projects.svg";
+import skillsIcon from "@assets/icons/skills.svg";
+import sunIcon from "@assets/icons/sun.svg";
+import avatar from "@assets/images/avatar.webp";
+import commentLinkingImage from "@assets/images/commentlinking.webp";
 
-// System Icons
-import ukraineFlag from "./assets/icons/flags/ukraine-flag.svg";
-import germanyFlag from "./assets/icons/flags/germany-flag.svg";
+import Footer from "@components/Footer.vue";
+import ParticlesBackground from "@components/ParticlesBackground.vue";
+import PlatformsGroup from "@components/PlatformsGroup.vue";
+import RepoCard from "@components/RepoCard.vue";
+import SectionTitle from "@components/SectionTitle.vue";
+import SkillCategory from "@components/SkillCategory.vue";
 
-// Navigation Icons
-import contactsIcon from "./assets/icons/contacts.svg";
-import skillsIcon from "./assets/icons/skills.svg";
-import projectsIcon from "./assets/icons/projects.svg";
-import sunIcon from "./assets/icons/sun.svg";
-import moonIcon from "./assets/icons/moon.svg";
+import { devPlatforms, socialNetworks } from "@data/platforms.js";
+import { skillCategories } from "@data/skills.js";
 
 const name = ref("Viktor Kratiuk");// Theme management
 const getSystemTheme = () => {
