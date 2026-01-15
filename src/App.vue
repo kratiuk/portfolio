@@ -18,9 +18,10 @@ import SectionTitle from "@components/SectionTitle.vue";
 import SkillCategory from "@components/SkillCategory.vue";
 
 import { devPlatforms, socialNetworks } from "@data/platforms.js";
+import { profile } from "@data/profile.js";
 import { skillCategories } from "@data/skills.js";
 
-const name = ref("Viktor Kratiuk");// Theme management
+// Theme management
 const getSystemTheme = () => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches;
 };
@@ -41,7 +42,7 @@ themeMediaQuery.addEventListener('change', (e) => {
 
 // Calculate age from birthdate
 const calculateAge = () => {
-  const birthDate = new Date("2005-08-05T00:00:00+03:00"); // Ukraine timezone (UTC+3)
+  const birthDate = new Date(profile.birthDate); // Ukraine timezone (UTC+3)
   const now = new Date();
   let age = now.getFullYear() - birthDate.getFullYear();
   const monthDiff = now.getMonth() - birthDate.getMonth();
@@ -166,11 +167,11 @@ const cleanupScrollObserver = () => {
 
     <section id="contact" class="hero">
       <img :src="avatar" alt="Avatar" class="avatar" />
-      <h1>{{ name }}</h1>
+      <h1>{{ profile.name }}</h1>
       <p class="bio">
-        <span class="bio-text">{{ age }}-year-old Full-Stack Developer from Rivne Oblast, </span>
+        <span class="bio-text">{{ age }}-year-old Full-Stack Developer from {{ profile.region }}, </span>
         <img :src="ukraineFlag" alt="Ukraine" class="flag" />
-        <span class="bio-text"> Ukraine</span>
+        <span class="bio-text"> {{ profile.country }}</span>
       </p>
 
       <div class="socials-section">
