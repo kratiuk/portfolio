@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted, ref } from "vue";
 
 import contactsIcon from "@assets/icons/contacts.svg";
-import germanyFlag from "@assets/icons/flags/germany-flag.svg";
 import ukraineFlag from "@assets/icons/flags/ukraine-flag.svg";
 import moonIcon from "@assets/icons/moon.svg";
 import projectsIcon from "@assets/icons/projects.svg";
@@ -171,9 +170,7 @@ const cleanupScrollObserver = () => {
       <p class="bio">
         <span class="bio-text">{{ age }}-year-old Full-Stack Developer from Rivne Oblast, </span>
         <img :src="ukraineFlag" alt="Ukraine" class="flag" />
-        <span class="bio-text"> Ukraine, currently living in Kaufungen, </span>
-        <img :src="germanyFlag" alt="Germany" class="flag" />
-        <span class="bio-text"> Germany</span>
+        <span class="bio-text"> Ukraine</span>
       </p>
 
       <div class="socials-section">
