@@ -14,7 +14,7 @@ export const devPlatforms = [
 ];
 
 export const socialNetworks = [
-  { name: "Telegram", icon: telegramIcon, url: "https://t.me/viktorkratiuk" },
+  { name: "Telegram", icon: telegramIcon, url: "https://t.me/krat1uk" },
   { name: "X", icon: xIcon, url: "https://x.com/kratiuk" },
   { name: "YouTube", icon: youtubeIcon, url: "https://youtube.com/@kratiuk" },
 ];
