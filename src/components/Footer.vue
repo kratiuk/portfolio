@@ -21,7 +21,7 @@ const techStack = [
     <footer class="footer">
         <div class="footer-row">
             <div class="footer-left">
-                <p class="copyright">© {{ currentYear }} Viktor Kratiuk · Licensed under MIT</p>
+                <p class="copyright">© 2025–{{ currentYear }} Viktor Kratiuk<br />Licensed under MIT</p>
             </div>
             <div class="footer-center">
                 <div class="built-with">
