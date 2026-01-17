@@ -52,7 +52,7 @@ const techStack = [
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
     background: linear-gradient(135deg, rgba(10, 10, 10, 0.04), rgba(20, 20, 20, 0.035));
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(4px) saturate(110%);
     box-sizing: border-box;
 }
@@ -137,7 +137,7 @@ const techStack = [
 body.light-theme .footer {
     color: rgba(10, 10, 10, 0.7);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(235, 235, 235, 0.045));
-    border-top: 1px solid rgba(0, 0, 0, 0.015);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(4px) saturate(110%);
 }
 
