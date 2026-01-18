@@ -35,8 +35,8 @@ defineProps({
   gap: 0.4rem;
 }
 
-:global(body.light-theme) .bio {
-  color: rgba(26, 26, 26, 0.8);
+:global(body.light-theme .bio) {
+  color: #000;
 }
 
 .bio-text {
