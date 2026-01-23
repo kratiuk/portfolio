@@ -51,7 +51,8 @@ const techStack = [
     padding: 4rem 2rem;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
-    background: linear-gradient(135deg, rgba(10, 10, 10, 0.04), rgba(20, 20, 20, 0.035));
+    background: rgba(255, 255, 255, 0.06);
+    background-image: none;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(4px) saturate(110%);
     box-sizing: border-box;
@@ -136,7 +137,8 @@ const techStack = [
 
 body.light-theme .footer {
     color: rgba(10, 10, 10, 0.7);
-    background: linear-gradient(135deg, rgba(170, 170, 170, 0.12), rgba(145, 145, 145, 0.09));
+    background: rgba(0, 0, 0, 0.06);
+    background-image: none;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(4px) saturate(110%);
 }
