@@ -6,13 +6,13 @@ import moonIcon from "@assets/icons/moon.svg";
 import projectsIcon from "@assets/icons/projects.svg";
 import skillsIcon from "@assets/icons/skills.svg";
 import sunIcon from "@assets/icons/sun.svg";
-import avatar from "@assets/images/avatar.webp";
 import commentLinkingImage from "@assets/images/commentlinking.webp";
 
 import BioText from "@components/BioText.vue";
 import Footer from "@components/Footer.vue";
 import ParticlesBackground from "@components/ParticlesBackground.vue";
 import PlatformsGroup from "@components/PlatformsGroup.vue";
+import ProfileAvatar from "@components/ProfileAvatar.vue";
 import RepoCard from "@components/RepoCard.vue";
 import SectionTitle from "@components/SectionTitle.vue";
 import SkillCategory from "@components/SkillCategory.vue";
@@ -166,7 +166,7 @@ const cleanupScrollObserver = () => {
     </header>
 
     <section id="contact" class="hero">
-      <img :src="avatar" alt="Avatar" class="avatar" />
+      <ProfileAvatar />
       <h1>{{ profile.name }}</h1>
       <BioText :age="age" :profile="profile" />
 
@@ -333,19 +333,6 @@ body.light-theme .theme-icon {
 
 body.light-theme .hero h1 {
   color: #1a1a1a;
-}
-
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #fff;
-  margin-left: -1rem;
-}
-
-body.light-theme .avatar {
-  border-color: #1a1a1a;
 }
 
 .socials-section {
