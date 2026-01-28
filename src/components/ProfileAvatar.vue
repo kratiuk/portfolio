@@ -1,22 +1,33 @@
 <script setup>
-import avatar from "@assets/images/avatar.webp";
+const avatarUrl = "https://api.kratiuk.me/profile-photo";
 </script>
 
 <template>
-  <img :src="avatar" alt="Avatar" class="avatar" />
+    <div class="avatar-wrapper">
+        <img :src="avatarUrl" alt="" class="avatar" />
+    </div>
 </template>
 
 <style scoped>
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #fff;
-  margin-left: -1rem;
+.avatar-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-left: -1rem;
+    overflow: hidden;
 }
 
-:global(body.light-theme) .avatar {
-  border-color: #1a1a1a;
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+</style>
+
+<style>
+body.light-theme .avatar-wrapper {
+    border-color: #1a1a1a !important;
 }
 </style>
