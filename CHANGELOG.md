@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file
 
 ## Unreleased
 
+### ✨ Features
+
+- Profile avatar now loads from API endpoint instead of local file
+
+### ♻️ Refactoring
+
+- Extracted profile avatar into separate `ProfileAvatar` component
+
 ### 📚 Docs
 
 - Created `CHANGELOG.md` with the full release history
