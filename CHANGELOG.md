@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file
 ### ✨ Features
 
 - Profile avatar now loads from API endpoint instead of local file
+- Added Reddit to social networks list
 
 ### ♻️ Refactoring
 

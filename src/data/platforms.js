@@ -1,6 +1,7 @@
 import githubIcon from "@assets/icons/brands/github.svg";
 import gitlabIcon from "@assets/icons/brands/gitlab.svg";
 import huggingFaceIcon from "@assets/icons/brands/hugging-face.svg";
+import redditIcon from "@assets/icons/brands/reddit.svg";
 import telegramIcon from "@assets/icons/brands/telegram.svg";
 import wakatimeIcon from "@assets/icons/brands/wakatime.svg";
 import xIcon from "@assets/icons/brands/x.svg";
@@ -17,4 +18,5 @@ export const socialNetworks = [
   { name: "Telegram", icon: telegramIcon, url: "https://t.me/krat1uk" },
   { name: "X (Twitter)", icon: xIcon, url: "https://x.com/kratiuk" },
   { name: "YouTube", icon: youtubeIcon, url: "https://youtube.com/@kratiuk" },
+  { name: "Reddit", icon: redditIcon, url: "https://www.reddit.com/user/kratiuk/" },
 ];
