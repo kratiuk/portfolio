@@ -166,7 +166,7 @@ const cleanupScrollObserver = () => {
     </header>
 
     <section id="contact" class="hero">
-      <ProfileAvatar />
+      <ProfileAvatar avatarUrl="https://api.kratiuk.me/profile-photo" />
       <h1>{{ profile.name }}</h1>
       <BioText :age="age" :profile="profile" />
 

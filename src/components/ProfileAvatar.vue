@@ -1,5 +1,10 @@
 <script setup>
-const avatarUrl = "https://api.kratiuk.me/profile-photo";
+defineProps({
+    avatarUrl: {
+        type: String,
+        required: true
+    }
+});
 </script>
 
 <template>
