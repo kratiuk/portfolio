@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file
 ### 📚 Docs
 
 - Created `CHANGELOG.md` with the full release history
+- Added scripts section to README with available commands
 
 ## 0.0.23 (2026-01-23)
 
