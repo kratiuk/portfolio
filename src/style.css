@@ -1,3 +1,5 @@
+@import './styles/theme.css';
+
 @font-face {
   font-family: 'Space Mono';
   src: url('./assets/fonts/SpaceMono-Regular.ttf') format('truetype');
@@ -37,7 +39,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #0a0a0a;
   transition: background-color 0.3s ease;
   overflow-x: hidden;
   --warning-bg: #0a0a0a;
@@ -47,7 +48,6 @@ body {
 }
 
 body.light-theme {
-  background-color: #f5f5f5;
   color: #1a1a1a;
   --warning-bg: #f5f5f5;
   --warning-text: #1a1a1a;
