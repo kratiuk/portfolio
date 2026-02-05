@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file
 ### ♻️ Refactoring
 
 - Extracted profile avatar into separate `ProfileAvatar` component
+- Moved background colors to `theme.css`
+- Use pure white and black background colors for light and dark themes
+
+### 🚀 CI/CD
+
+- Added GitHub Release workflow with automated changelog extraction and build attachment
 
 ### 📚 Docs
 
