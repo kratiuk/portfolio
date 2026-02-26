@@ -4,10 +4,12 @@
 
 /* Light Theme */
 body.light-theme {
-  background-color: #ffffff;
+  --bg-color: #ffffff;
+  background-color: var(--bg-color);
 }
 
 /* Dark Theme */
 body {
-  background-color: #000000;
+  --bg-color: #000000;
+  background-color: var(--bg-color);
 }

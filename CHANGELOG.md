@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file
 
+## Unreleased
+
+### ✨ Features
+
+- Apply theme background colors to mobile & tablet unsupported screen
+
 ## 0.0.24 (2026-02-05)
 
 ### ✨ Features

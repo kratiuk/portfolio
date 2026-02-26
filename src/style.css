@@ -41,7 +41,6 @@ body {
   min-height: 100vh;
   transition: background-color 0.3s ease;
   overflow-x: hidden;
-  --warning-bg: #0a0a0a;
   --warning-text: #ffffff;
   --warning-text-muted: rgba(255, 255, 255, 0.7);
   --warning-icon-filter: invert(1);
@@ -49,7 +48,6 @@ body {
 
 body.light-theme {
   color: #1a1a1a;
-  --warning-bg: #f5f5f5;
   --warning-text: #1a1a1a;
   --warning-text-muted: rgba(26, 26, 26, 0.7);
   --warning-icon-filter: invert(0);
