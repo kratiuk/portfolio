@@ -14,5 +14,6 @@
 | `pnpm build` | Build project for production |
 | `pnpm preview` | Preview build locally before deployment |
 | `pnpm lint` | Check code with linter |
+| `pnpm count` | Count lines of code |
 
 For development information, see [CONTRIBUTING.md](CONTRIBUTING.md)

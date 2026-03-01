@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
+    "count": "node scripts/code-count.js",
     "prepare": "husky"
   },
   "dependencies": {
