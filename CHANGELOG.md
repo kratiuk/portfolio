@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file
 - Added `pnpm count` command for code statistics
 - Added `Flashmark` to projects list
 - Added multi-icon support for skill items
+- Added Kotlin to programming languages
 
 ### ♻️ Refactoring
 
