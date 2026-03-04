@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file
 ### ♻️ Refactoring
 
 - Combined JavaScript and TypeScript into a single JS/TS skill entry
+- Adjusted release workflow to run only on v-prefixed tags and avoid tag rewriting
 
 ## 0.0.24 (2026-02-05)
 
