@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file
 
 - Apply theme background colors to mobile & tablet unsupported screen
 - Added `pnpm count` command for code statistics
+- Added `Flashmark` to projects list
 
 ## 0.0.24 (2026-02-05)
 

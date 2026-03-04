@@ -3,6 +3,8 @@ export async function fetchGithubRepoInfo(owner, repo) {
   const endpoint =
     repo === 'commentlinking'
       ? `${baseUrl}/commentlinking/github/repo-info`
+      : repo === 'flashmark'
+        ? `${baseUrl}/flashmark/github/repo-info`
       : repo === 'portfolio'
         ? `${baseUrl}/portfolio/github/repo-info`
         : `${baseUrl}/commentlinking/github/repo-info`;
