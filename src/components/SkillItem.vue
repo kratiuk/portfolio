@@ -1,23 +1,39 @@
 <script setup>
-defineProps({
+import { computed } from "vue";
+
+const props = defineProps({
     name: {
         type: String,
         required: true,
     },
     icon: {
         type: String,
-        required: true,
+        default: "",
+    },
+    icons: {
+        type: Array,
+        default: () => [],
     },
     invertOnDark: {
         type: Boolean,
         default: false,
     },
 });
+
+const iconsToRender = computed(() => {
+    if (props.icons && props.icons.length > 0) {
+        return props.icons;
+    }
+    return props.icon ? [props.icon] : [];
+});
 </script>
 
 <template>
     <div class="skill-item">
-        <img :src="icon" :alt="name" class="skill-icon" :class="{ 'invert-on-dark': invertOnDark }" />
+        <div class="skill-icons">
+            <img v-for="iconSrc in iconsToRender" :key="iconSrc" :src="iconSrc" :alt="name" class="skill-icon"
+                :class="{ 'invert-on-dark': invertOnDark }" />
+        </div>
         <span class="skill-name">{{ name }}</span>
     </div>
 </template>
@@ -55,9 +71,17 @@ body.light-theme .skill-item:hover {
     border-color: rgba(0, 0, 0, 0.2);
 }
 
+.skill-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 36px;
+}
+
 .skill-icon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
 }
 

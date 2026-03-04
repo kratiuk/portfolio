@@ -19,7 +19,7 @@ defineProps({
         <div class="skills-grid">
             <!-- Generates skill widgets in a grid for the category -->
             <SkillItem v-for="skill in skills" :key="skill.name" :name="skill.name" :icon="skill.icon"
-                :invertOnDark="skill.invertOnDark" />
+                :icons="skill.icons" :invertOnDark="skill.invertOnDark" />
         </div>
     </div>
 </template>
