@@ -15,8 +15,7 @@ export const skillCategories = [
   {
     title: "Programming Languages",
     skills: [
-      { name: "TypeScript", icon: typescriptIcon },
-      { name: "JavaScript", icon: javascriptIcon },
+      { name: "JS/TS", icons: [javascriptIcon, typescriptIcon] },
       { name: "Python", icon: pythonIcon },
       { name: "Dart", icon: dartIcon },
       { name: "Go", icon: goIcon },

@@ -11,6 +11,10 @@ All notable changes to this project will be documented in this file
 - Added `Flashmark` to projects list
 - Added multi-icon support for skill items
 
+### ♻️ Refactoring
+
+- Combined JavaScript and TypeScript into a single JS/TS skill entry
+
 ## 0.0.24 (2026-02-05)
 
 ### ✨ Features
