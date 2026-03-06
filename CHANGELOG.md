@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file
 
+## Unreleased
+
+### ✨ Features
+
+- Set default cursor for text elements to avoid I-beam by default
+
 ## 0.0.25 (2026-03-04)
 
 ### ✨ Features

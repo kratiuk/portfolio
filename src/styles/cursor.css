@@ -1,0 +1,39 @@
+/* ===========================
+   Cursor Defaults
+   =========================== */
+
+/* Default cursor for text elements */
+p,
+span,
+div,
+li,
+dt,
+dd,
+label,
+blockquote,
+figcaption,
+small,
+strong,
+em,
+i,
+b,
+code,
+pre,
+kbd,
+samp,
+mark,
+q,
+cite,
+abbr,
+address,
+time,
+sup,
+sub,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: default;
+}
