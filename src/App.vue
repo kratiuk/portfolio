@@ -6,20 +6,20 @@ import moonIcon from "@assets/icons/moon.svg";
 import projectsIcon from "@assets/icons/projects.svg";
 import skillsIcon from "@assets/icons/skills.svg";
 import sunIcon from "@assets/icons/sun.svg";
-import commentLinkingImage from "@assets/images/commentlinking.webp";
-import flashmarkImage from "@assets/images/flashmark.png";
 
 import BioText from "@components/BioText.vue";
 import Footer from "@components/Footer.vue";
 import ParticlesBackground from "@components/ParticlesBackground.vue";
 import PlatformsGroup from "@components/PlatformsGroup.vue";
 import ProfileAvatar from "@components/ProfileAvatar.vue";
+import ProjectCarousel from "@components/ProjectCarousel.vue";
 import RepoCard from "@components/RepoCard.vue";
 import SectionTitle from "@components/SectionTitle.vue";
 import SkillCategory from "@components/SkillCategory.vue";
 
 import { devPlatforms, socialNetworks } from "@data/platforms.js";
 import { profile } from "@data/profile.js";
+import { projects } from "@data/projects.js";
 import { skillCategories } from "@data/skills.js";
 
 // Theme management
@@ -192,34 +192,8 @@ const cleanupScrollObserver = () => {
 
     <section id="projects" class="projects-section">
       <SectionTitle title="Projects" />
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image-wrapper">
-            <img :src="commentLinkingImage" alt="Comment Linking" class="project-image project-image--scaled" />
-          </div>
-          <h3 class="project-title">Comment Linking</h3>
-          <p class="project-description">
-            Extension for Visual Studio Code that allows you to create anchors and links in comments
-            and navigate between them with ease across your entire codebase
-          </p>
-
-          <RepoCard url="https://github.com/kratiuk/commentlinking" :showOwner="true" class="project-repo-card" />
-        </div>
-
-        <div class="project-card">
-          <div class="project-image-wrapper">
-            <img :src="flashmarkImage" alt="Flashmark" class="project-image" />
-          </div>
-          <h3 class="project-title">Flashmark</h3>
-          <p class="project-description">
-            An app built with Kotlin + Jetpack Compose, styled with Material 3, for fast capture of ideas and thoughts
-            without unlocking the device
-          </p>
-
-          <RepoCard url="https://github.com/kratiuk/flashmark" :showOwner="true" class="project-repo-card" />
-        </div>
-      </div>
+      <!-- A component that displays all my projects as a carousel -->
+      <ProjectCarousel :projects="projects" />
     </section>
 
     <Footer />
@@ -403,87 +377,5 @@ body.light-theme .socials-divider {
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
-}
-
-.projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.project-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 520px;
-  flex: 1 1 420px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 520px;
-}
-
-body.light-theme .project-card {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.project-image-wrapper {
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 240px;
-  max-width: 100%;
-}
-
-.project-image {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 240px;
-  border-radius: 4px;
-  image-rendering: auto;
-  display: block;
-}
-
-.project-image--scaled {
-  transform: scale(2);
-  transform-origin: center;
-}
-
-
-.project-title {
-  font-size: 1.8rem;
-  margin: 0 0 1rem 0;
-  color: #fff;
-}
-
-body.light-theme .project-title {
-  color: #1a1a1a;
-}
-
-.project-description {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 1.5rem 0;
-  flex: 1 1 auto;
-}
-
-body.light-theme .project-description {
-  color: rgba(26, 26, 26, 0.7);
-}
-
-.project-repo-card {
-  display: inline-flex;
-  margin-top: 0;
-  align-self: center;
 }
 </style>

@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file
 
 - Set default cursor for text elements to avoid I-beam by default
 
+### ♻️ Refactoring
+
+- Extracted the projects section into a reusable `ProjectCarousel` component and moved project data into a dedicated data file
+
 ## 0.0.25 (2026-03-04)
 
 ### ✨ Features
