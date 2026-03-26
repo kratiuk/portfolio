@@ -1,15 +1,6 @@
 export async function fetchGithubRepoInfo(owner, repo) {
   const baseUrl = import.meta.env.DEV ? '/api' : 'https://api.kratiuk.me';
-  const endpoint =
-    repo === 'commentlinking'
-      ? `${baseUrl}/commentlinking/github/repo-info`
-      : repo === 'flashmark'
-        ? `${baseUrl}/flashmark/github/repo-info`
-      : repo === 'flags'
-        ? `${baseUrl}/flags/github/repo-info`
-      : repo === 'portfolio'
-        ? `${baseUrl}/portfolio/github/repo-info`
-        : `${baseUrl}/commentlinking/github/repo-info`;
+  const endpoint = `${baseUrl}/${repo}/github/repo-info`;
   const repoRes = await fetch(endpoint);
   const repoData = await repoRes.json();
   return {

@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file
 
 - Added `Flags` as the third project in the carousel
 
+### ♻️ Refactoring
+
+- Removed hardcoded GitHub repo info endpoints and now derive them automatically from the repository URL
+
 ## 0.0.26 (2026-03-23)
 
 ### ✨ Features
