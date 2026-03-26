@@ -5,6 +5,8 @@ export async function fetchGithubRepoInfo(owner, repo) {
       ? `${baseUrl}/commentlinking/github/repo-info`
       : repo === 'flashmark'
         ? `${baseUrl}/flashmark/github/repo-info`
+      : repo === 'flags'
+        ? `${baseUrl}/flags/github/repo-info`
       : repo === 'portfolio'
         ? `${baseUrl}/portfolio/github/repo-info`
         : `${baseUrl}/commentlinking/github/repo-info`;

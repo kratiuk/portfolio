@@ -1,4 +1,5 @@
 import commentLinkingImage from "@assets/images/commentlinking.webp";
+import flagsImage from "@assets/images/flags.png";
 import flashmarkImage from "@assets/images/flashmark.png";
 
 /*
@@ -19,6 +20,13 @@ export const projects = [
     image: flashmarkImage,
     imageAlt: "Flashmark",
     repoUrl: "https://github.com/kratiuk/flashmark",
+  },
+  {
+    title: "Flags",
+    description: "A lightweight Windows tray app that displays your current keyboard layout as a flag icon",
+    image: flagsImage,
+    imageAlt: "Flags",
+    repoUrl: "https://github.com/kratiuk/flags",
   },
 ];
  
