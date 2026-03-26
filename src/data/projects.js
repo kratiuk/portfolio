@@ -11,7 +11,6 @@ export const projects = [
     description: "Extension for Visual Studio Code that allows you to create anchors and links in comments and navigate between them with ease across your entire codebase",
     image: commentLinkingImage,
     imageAlt: "Comment Linking",
-    imageClass: "project-image--scaled",
     repoUrl: "https://github.com/kratiuk/commentlinking",
   },
   {

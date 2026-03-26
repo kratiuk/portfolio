@@ -140,25 +140,18 @@ body.light-theme .project-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 240px;
-  width: 100%;
-  max-width: 100%;
+  width: min(100%, 240px);
+  height: min(100%, 240px);
   overflow: hidden;
 }
 
 .project-image {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 240px;
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   image-rendering: auto;
   display: block;
-}
-
-:deep(.project-image--scaled) {
-  transform: scale(2);
-  transform-origin: center;
+  object-fit: fill;
 }
 
 .project-title {
@@ -243,11 +236,12 @@ body.light-theme .project-dot--active {
   }
 
   .project-image-wrapper {
+    width: min(100%, 200px);
     height: 200px;
   }
 
   .project-image {
-    max-height: 200px;
+    height: 100%;
   }
 
   .project-title {
