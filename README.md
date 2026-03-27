@@ -13,6 +13,7 @@
 | `pnpm dev` | Start development server for testing |
 | `pnpm build` | Build project for production |
 | `pnpm preview` | Preview build locally before deployment |
+| `pnpm screenshot` | Make a preview screenshot |
 | `pnpm lint` | Check code with linter |
 | `pnpm count` | Count lines of code |
 

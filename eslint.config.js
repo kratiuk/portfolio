@@ -36,6 +36,15 @@ export default [
     },
   },
   {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: {
+        console: "readonly",
+        fetch: "readonly",
+      },
+    },
+  },
+  {
     plugins: {
       "simple-import-sort": simpleImportSort,
     },

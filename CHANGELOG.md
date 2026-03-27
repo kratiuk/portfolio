@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file
 
+## Unreleased
+
+### ✨ Features
+
+- Added website screenshot generator script
+
+### 📚 Docs
+
+- Updated website preview screenshot
+
 ## 0.0.27 (2026-03-26)
 
 ### ✨ Features

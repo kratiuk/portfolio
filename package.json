@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "screenshot": "node scripts/screenshoter.js",
     "lint": "eslint .",
     "count": "node scripts/code-count.js",
     "prepare": "husky"
@@ -22,6 +23,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-vue": "^10.5.1",
     "husky": "^9.1.7",
+    "playwright": "^1.58.2",
     "vite": "^7.2.2",
     "vue-eslint-parser": "^10.2.0"
   }
