@@ -2,11 +2,18 @@
 
 All notable changes to this project will be documented in this file
 
-## Unreleased
+## 0.0.28 (2026-06-08)
 
 ### ✨ Features
 
+- Added German locale (`de`) and English locale (`en`) with full i18n support via `vue-i18n`
+- Locale is now resolved automatically from the `X-Site-Locale` HTTP header sent by the web server
 - Added website screenshot generator script
+
+### 🐛 Bug Fixes
+
+- Fixed CI deploy failing when the remote directory does not exist (`rsync --mkpath`)
+- Fixed `pnpm-workspace.yaml` missing required `packages` field causing CI install to fail
 
 ### 📚 Docs
 
