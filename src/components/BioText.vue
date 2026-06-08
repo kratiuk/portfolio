@@ -1,13 +1,13 @@
 <script setup>
+import { useI18n } from "vue-i18n";
+
 import ukraineFlag from "@assets/icons/flags/ukraine-flag.svg";
+
+const { t } = useI18n();
 
 defineProps({
   age: {
     type: Number,
-    required: true,
-  },
-  profile: {
-    type: Object,
     required: true,
   },
 });
@@ -15,9 +15,9 @@ defineProps({
 
 <template>
   <p class="bio">
-    <span class="bio-text">{{ age }}-year-old Full-Stack Developer from {{ profile.region }}, </span>
+    <span class="bio-text">{{ t('bio', { age, region: t('profile.region') }) }} </span>
     <img :src="ukraineFlag" alt="Ukraine" class="flag" />
-    <span class="bio-text"> {{ profile.country }}</span>
+    <span class="bio-text"> {{ t('profile.country') }}</span>
   </p>
 </template>
 

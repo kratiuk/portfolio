@@ -14,7 +14,7 @@ import vueIcon from "@assets/icons/technologies/vue.svg";
 
 export const skillCategories = [
   {
-    title: "Programming Languages",
+    titleKey: "skillCategories.languages",
     skills: [
       { name: "JS/TS", icons: [javascriptIcon, typescriptIcon] },
       { name: "Python", icon: pythonIcon },
@@ -24,7 +24,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: "Frontend",
+    titleKey: "skillCategories.frontend",
     skills: [
       { name: "Vue.js", icon: vueIcon },
       { name: "React", icon: reactIcon },
@@ -33,7 +33,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: "Mobile",
+    titleKey: "skillCategories.mobile",
     skills: [
       { name: "Flutter", icon: flutterIcon },
       { name: "React Native", icon: reactIcon },
@@ -41,7 +41,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: "Backend",
+    titleKey: "skillCategories.backend",
     skills: [{ name: "Supabase", icon: supabaseIcon }],
   },
 ];

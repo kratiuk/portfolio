@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 import contactsIcon from "@assets/icons/contacts.svg";
 import moonIcon from "@assets/icons/moon.svg";
@@ -21,6 +22,8 @@ import { devPlatforms, socialNetworks } from "@data/platforms.js";
 import { profile } from "@data/profile.js";
 import { projects } from "@data/projects.js";
 import { skillCategories } from "@data/skills.js";
+
+const { t } = useI18n();
 
 // Theme management
 const getSystemTheme = () => {
@@ -146,15 +149,15 @@ const cleanupScrollObserver = () => {
       <nav class="nav">
         <a @click.prevent="scrollToSection('#contact')" href="#contact" class="nav-link">
           <img :src="contactsIcon" alt="" class="nav-icon" />
-          Contact
+          {{ t('nav.contact') }}
         </a>
         <a @click.prevent="scrollToSection('#skills')" href="#skills" class="nav-link">
           <img :src="skillsIcon" alt="" class="nav-icon" />
-          Skills
+          {{ t('nav.skills') }}
         </a>
         <a @click.prevent="scrollToSection('#projects')" href="#projects" class="nav-link">
           <img :src="projectsIcon" alt="" class="nav-icon" />
-          Projects
+          {{ t('nav.projects') }}
         </a>
       </nav>
       <div class="header-right">
@@ -169,7 +172,7 @@ const cleanupScrollObserver = () => {
     <section id="contact" class="hero">
       <ProfileAvatar avatarUrl="https://api.kratiuk.me/profile-photo" />
       <h1>{{ profile.name }}</h1>
-      <BioText :age="age" :profile="profile" />
+      <BioText :age="age" />
 
       <div class="socials-section">
         <PlatformsGroup label="Developer platforms" :items="devPlatforms" />
@@ -181,17 +184,17 @@ const cleanupScrollObserver = () => {
     </section>
 
     <section id="skills" class="skills-section">
-      <SectionTitle title="Skills" />
+      <SectionTitle :title="t('sections.skills')" />
 
       <div class="categories-container">
         <!-- Generates skill category blocks for each category in skillCategories -->
-        <SkillCategory v-for="category in skillCategories" :key="category.title" :title="category.title"
+        <SkillCategory v-for="category in skillCategories" :key="category.titleKey" :title="t(category.titleKey)"
           :skills="category.skills" />
       </div>
     </section>
 
     <section id="projects" class="projects-section">
-      <SectionTitle title="Projects" />
+      <SectionTitle :title="t('sections.projects')" />
       <!-- A component that displays all my projects as a carousel -->
       <ProjectCarousel :projects="projects" />
     </section>

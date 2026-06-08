@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from "vue-i18n";
+
 import cssIcon from "@assets/icons/technologies/css.svg";
 import htmlIcon from "@assets/icons/technologies/html.svg";
 import javascriptIcon from "@assets/icons/technologies/javascript.svg";
@@ -6,6 +8,7 @@ import vueIcon from "@assets/icons/technologies/vue.svg";
 
 import packageJson from "@root/package.json";
 
+const { t } = useI18n();
 const currentYear = new Date().getFullYear();
 const version = packageJson.version;
 
@@ -21,25 +24,28 @@ const techStack = [
     <footer class="footer">
         <div class="footer-row">
             <div class="footer-left">
-                <p class="copyright">© 2025–{{ currentYear }} Viktor Kratiuk<br />Licensed under MIT</p>
+                <p class="copyright">© 2025–{{ currentYear }} Viktor Kratiuk<br />{{ t('footer.license') }}</p>
             </div>
             <div class="footer-center">
                 <div class="built-with">
-                    <span>Built with</span>
+                    <span>{{ t('footer.builtWith') }}</span>
                     <div class="tech-icons">
                         <img v-for="tech in techStack" :key="tech.name" :src="tech.icon" :alt="tech.name"
                             class="tech-icon" :title="tech.name" />
                     </div>
                 </div>
-                <p class="version">Version: v{{ version }}</p>
+                <p class="version">{{ t('footer.version', { version }) }}</p>
             </div>
             <div class="footer-right">
-                <p class="fonts-info">
-                    Open licensed fonts are used:
-                    <a href="https://fonts.google.com/specimen/Space+Mono/license" target="_blank"
-                        rel="noopener noreferrer">Space Mono</a>,
-                    <a href="https://jack-daw.com/fonts/" target="_blank" rel="noopener noreferrer">Stoicheion</a>
-                </p>
+                <i18n-t keypath="footer.fonts" tag="p" class="fonts-info">
+                    <template #spaceMono>
+                        <a href="https://fonts.google.com/specimen/Space+Mono/license" target="_blank"
+                            rel="noopener noreferrer">Space Mono</a>
+                    </template>
+                    <template #stoicheion>
+                        <a href="https://jack-daw.com/fonts/" target="_blank" rel="noopener noreferrer">Stoicheion</a>
+                    </template>
+                </i18n-t>
             </div>
         </div>
     </footer>

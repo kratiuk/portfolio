@@ -1,7 +1,10 @@
 <script setup>
 import { computed, onUnmounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
 import RepoCard from "@components/RepoCard.vue";
+
+const { t } = useI18n();
 
 const props = defineProps({
   projects: {
@@ -80,7 +83,7 @@ onUnmounted(() => {
         </div>
 
         <h3 class="project-title">{{ currentProject.title }}</h3>
-        <p class="project-description">{{ currentProject.description }}</p>
+        <p class="project-description">{{ t(currentProject.descriptionKey) }}</p>
 
         <RepoCard
           :url="currentProject.repoUrl"
