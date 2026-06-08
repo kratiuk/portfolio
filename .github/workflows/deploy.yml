@@ -58,4 +58,4 @@ jobs:
       - name: Deploy to server
         run: |
           ssh-keyscan -t ed25519 -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-          rsync -avz --delete dist/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/kratiuk.me/
+          rsync -avz --delete --mkpath dist/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/kratiuk.me/
