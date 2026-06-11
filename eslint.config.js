@@ -57,6 +57,7 @@ export default [
             ["^vue$", "^@?\\w"],
             ["^@assets/"],
             ["^@app$", "^@components/"],
+            ["^@composables/"],
             ["^@data/"],
             ["^@root/"],
             ["^\\.\\.(?!/?$)", "^\\.\\./?$"],

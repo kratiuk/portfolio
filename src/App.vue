@@ -10,6 +10,7 @@ import sunIcon from "@assets/icons/sun.svg";
 
 import BioText from "@components/BioText.vue";
 import Footer from "@components/Footer.vue";
+import MobileWarning from "@components/MobileWarning.vue";
 import ParticlesBackground from "@components/ParticlesBackground.vue";
 import PlatformsGroup from "@components/PlatformsGroup.vue";
 import ProfileAvatar from "@components/ProfileAvatar.vue";
@@ -18,12 +19,15 @@ import RepoCard from "@components/RepoCard.vue";
 import SectionTitle from "@components/SectionTitle.vue";
 import SkillCategory from "@components/SkillCategory.vue";
 
+import { useMobile } from "@composables/useMobile.js";
+
 import { devPlatforms, socialNetworks } from "@data/platforms.js";
 import { profile } from "@data/profile.js";
 import { projects } from "@data/projects.js";
 import { skillCategories } from "@data/skills.js";
 
 const { t } = useI18n();
+const { isMobile } = useMobile();
 
 // Theme management
 const getSystemTheme = () => {
@@ -142,6 +146,8 @@ const cleanupScrollObserver = () => {
 
 <!-- Website template -->
 <template>
+  <MobileWarning v-if="isMobile" />
+  <template v-else>
   <ParticlesBackground />
   <div class="portfolio">
     <!-- Header with navigation -->
@@ -201,6 +207,7 @@ const cleanupScrollObserver = () => {
 
     <Footer />
   </div>
+  </template>
 </template>
 
 <style scoped>

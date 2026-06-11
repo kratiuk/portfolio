@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file
 
+## Unreleased
+
+### ♻️ Refactoring
+
+- Moved mobile device detection and warning screen from raw HTML into a Vue component
+
 ## 0.0.28 (2026-06-08)
 
 ### ✨ Features

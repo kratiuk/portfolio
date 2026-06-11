@@ -33,6 +33,10 @@ export default {
         "A lightweight Windows tray app that displays your current keyboard layout as a flag icon",
     },
   },
+  mobileWarning: {
+    title: "Mobile & Tablet Not Supported",
+    description: "This web page is not optimized for mobile phones and tablets. Please visit on a desktop or laptop computer",
+  },
   footer: {
     license: "Licensed under MIT",
     builtWith: "Built with",

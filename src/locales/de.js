@@ -33,6 +33,10 @@ export default {
         "Eine schlanke Windows-Tray-App, die das aktuelle Tastaturlayout als Flaggensymbol anzeigt",
     },
   },
+  mobileWarning: {
+    title: "Mobil & Tablet nicht unterstützt",
+    description: "Diese Webseite ist nicht für Mobiltelefone und Tablets optimiert. Bitte besuche sie auf einem Desktop- oder Laptop-Computer",
+  },
   footer: {
     license: "Lizenziert unter MIT",
     builtWith: "Erstellt mit",

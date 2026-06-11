@@ -20,75 +20,18 @@
       display: none;
     }
 
-    html.is-mobile #app {
-      display: none !important;
+    body {
+      background-color: #000000;
     }
 
-    html.is-mobile #mobile-warning {
-      display: flex !important;
-    }
-
-    #mobile-warning {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: var(--bg-color);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      text-align: center;
-      z-index: 9999;
-      font-family: 'Space Mono', monospace, system-ui;
-    }
-
-    #mobile-warning img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1.5rem;
-      filter: var(--warning-icon-filter, invert(1));
-    }
-
-    #mobile-warning h1 {
-      font-size: 1.5rem;
-      color: var(--warning-text, #fff);
-      margin: 0 0 0.75rem 0;
-      padding: 0 1.5rem;
-    }
-
-    #mobile-warning p {
-      font-size: 0.95rem;
-      color: var(--warning-text-muted, rgba(255, 255, 255, 0.7));
-      max-width: 350px;
-      margin: 0;
-      padding: 0 1.5rem;
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #ffffff;
+      }
     }
   </style>
 
   <script>
-    (function () {
-      function checkMobile() {
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-        var aspectRatio = width / height;
-        var isMobile = width < height || aspectRatio <= 1.25;
-
-        if (isMobile) {
-          document.documentElement.classList.add('is-mobile');
-        } else {
-          document.documentElement.classList.remove('is-mobile');
-        }
-      }
-
-      // Initial check
-      checkMobile();
-
-      window.addEventListener('resize', checkMobile);
-    })();
-
     // Store hash and remove it IMMEDIATELY to prevent browser jump
     // This must run BEFORE any other code
     if (window.location.hash) {
@@ -104,11 +47,6 @@
 </head>
 
 <body>
-  <div id="mobile-warning">
-    <img src="/src/assets/icons/no-mobile.svg" alt="No Mobile" />
-    <h1>Mobile & Tablet Not Supported</h1>
-    <p>This web page is not optimized for mobile phones and tablets. Please visit on a desktop or laptop computer</p>
-  </div>
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
 </body>
