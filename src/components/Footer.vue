@@ -42,8 +42,8 @@ const techStack = [
                         <a href="https://fonts.google.com/specimen/Space+Mono/license" target="_blank"
                             rel="noopener noreferrer">Space Mono</a>
                     </template>
-                    <template #stoicheion>
-                        <a href="https://jack-daw.com/fonts/" target="_blank" rel="noopener noreferrer">Stoicheion</a>
+                    <template #rubikDoodleShadow>
+                        <a href="https://fonts.google.com/specimen/Rubik+Doodle+Shadow" target="_blank" rel="noopener noreferrer">Rubik Doodle Shadow</a>
                     </template>
                 </i18n-t>
             </div>

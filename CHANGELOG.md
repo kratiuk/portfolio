@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file
 
 - Added dev-mode German locale shortcut: visiting `/de` in local development forces the `de` locale without requiring an HTTP header
 
+### 🐛 Fixes
+
+- Replaced Stoicheion font with Rubik Doodle Shadow for section titles to fix broken umlaut rendering
+
 ## 0.0.29 (2026-06-12)
 
 ### ♻️ Refactoring

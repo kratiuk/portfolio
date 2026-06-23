@@ -41,6 +41,6 @@ export default {
     license: "Lizenziert unter MIT",
     builtWith: "Erstellt mit",
     version: "Version: v{version}",
-    fonts: "Es werden offen lizenzierte Schriften verwendet: {spaceMono}, {stoicheion}",
+    fonts: "Es werden offen lizenzierte Schriften verwendet: {spaceMono}, {rubikDoodleShadow}",
   },
 };

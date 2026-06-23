@@ -15,15 +15,15 @@ defineProps({
 
 <style>
 @font-face {
-    font-family: 'Stoicheion';
-    src: url('../assets/fonts/Stoicheion.ttf') format('truetype');
+    font-family: 'RubikDoodleShadow';
+    src: url('../assets/fonts/RubikDoodleShadow-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 .section-title {
-    font-family: 'Stoicheion', sans-serif;
+    font-family: 'RubikDoodleShadow', sans-serif;
     font-size: 2.5rem;
     margin: 0 0 2.5rem 0;
     color: #fff;
