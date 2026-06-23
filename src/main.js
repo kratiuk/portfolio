@@ -8,7 +8,11 @@ import App from "@app";
 import "./style.css";
 
 const res = await fetch(window.location.href, { method: "HEAD" });
-const locale = res.headers.get("X-Site-Locale") ?? "en";
+
+// dev only: localhost/de forces German locale for testing
+const locale = (import.meta.env.DEV && window.location.pathname.startsWith("/de"))
+  ? "de"
+  : res.headers.get("X-Site-Locale");
 
 const i18n = createI18n({
   legacy: false,

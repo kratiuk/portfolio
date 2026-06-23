@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file
 
+## [Unreleased]
+
+### ✨ Features
+
+- Added dev-mode German locale shortcut: visiting `/de` in local development forces the `de` locale without requiring an HTTP header
+
 ## 0.0.29 (2026-06-12)
 
 ### ♻️ Refactoring

@@ -21,6 +21,8 @@ pnpm install
 ```bash
 # Start development server
 pnpm dev
+
+# English is default. Add /de: localhost:<port>/de to switch to German
 ```
 
 ```bash
